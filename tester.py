@@ -50,7 +50,7 @@ def get_user_input():
 
     try:
         total_requests = int(input("Masukkan total jumlah request per batch: "))
-        concurrent_requests = int(input("Masukkan jumlah koneksi bersamaan (seperti thread): "))
+        concurrent_requests = int(input("Masukkan jumlah koneksi bersamaan: "))
     except ValueError:
         print("Jumlah harus berupa angka.")
         exit()
