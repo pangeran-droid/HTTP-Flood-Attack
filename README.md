@@ -16,15 +16,45 @@ This project focuses on learning and demonstrating **asynchronous programming**,
 
 ---
 
-## Application Preview
+## Example
 
-<p align="center">
-  <img src="asset/example.png" alt="CLI Preview">
-</p>
+```text
+.__            __    __                 __    
+|  |__ _____ _/  |__/  |______    ____ |  | __
+|  |  \\__  \\   __\   __\__  \ _/ ___\|  |/ /
+|   Y  \/ __ \|  |  |  |  / __ \\  \___|    < 
+|___|  (____  /__|  |__| (____  /\___  >__|_ \
+     \/     \/                \/     \/     \/
 
-<p align="center">
-  <em>Command-line interface preview</em>
-</p>
+
+
+[Configuration]
+Examples: requests=1000 | concurrency=100
+
+[13:35:08] Starting configuration...
+
+› Target URL            (e.g. https://example.com) : https://example.com
+› Total requests        (e.g. 1000) : 1000
+› Concurrent connections(e.g. 100) : 100
+
+────────────────────────────────────────────────────
+ Target URL   : https://example.com
+ Requests     : 1000
+ Concurrency  : 100
+────────────────────────────────────────────────────
+
+
+[OK] [13:35:24] Status: 200
+[OK] [13:35:24] Status: 200
+[OK] [13:35:24] Status: 200
+[OK] [13:35:24] Status: 200
+[OK] [13:35:24] Status: 200
+[OK] [13:35:24] Status: 200
+[OK] [13:35:24] Status: 200
+[OK] [13:35:24] Status: 200
+[OK] [13:35:24] Status: 200
+[OK] [13:35:24] Status: 200
+```
 
 ---
 
@@ -69,5 +99,6 @@ chmod +x tester.py
 
 > **Any misuse of this tool is solely the responsibility of the user.**
 The developer assumes no liability for illegal or unethical use.
+
 
 
