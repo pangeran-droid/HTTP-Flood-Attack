@@ -67,8 +67,8 @@ Examples: requests=1000 | concurrency=100
 ### Setup
 
 ```bash
-git clone https://github.com/pangeran-droid/HTTP-Flood-Attack.git
-cd HTTP-Flood-Attack
+git clone https://github.com/pangeran-droid/Hattack.git
+cd Hattack
 pip install aiohttp
 chmod +x tester.py
 ./tester.py
@@ -99,6 +99,7 @@ chmod +x tester.py
 
 > **Any misuse of this tool is solely the responsibility of the user.**
 The developer assumes no liability for illegal or unethical use.
+
 
 
 
