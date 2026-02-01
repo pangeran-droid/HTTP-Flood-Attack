@@ -1,31 +1,40 @@
-﻿# Async HTTP Flood Tool (Educational Purposes Only)
+# Async HTTP Load Testing Tool (Educational Use Only)
 
-Sebuah script Python berbasis `async/await` untuk melakukan *stress test* atau *load testing* pada server HTTP menggunakan modul `aiohttp`.
+An asynchronous Python-based CLI tool built with `asyncio` and `aiohttp`, designed for **HTTP load testing and concurrency experiments**.
 
----
-
-## Fitur
-
-- Asynchronous HTTP flooding dengan `aiohttp`
-- Random User-Agent untuk setiap request (simulasi trafik nyata)
-- Loop terus-menerus untuk beban berkelanjutan
-- Jumlah request & koneksi bersamaan dapat diatur
+This project focuses on learning and demonstrating **asynchronous programming**, **request concurrency**, and **network behavior under load**.
 
 ---
 
-## Preview Aplikasi
+## Features
+
+- Asynchronous HTTP requests using `aiohttp`
+- Configurable total requests and concurrent connections
+- Randomized User-Agent per request to simulate real traffic
+- Continuous request loop for sustained load testing
+- Lightweight and easy-to-run CLI interface
+
+---
+
+## Application Preview
 
 <p align="center">
-  <img src="asset/example.png">
+  <img src="asset/example.png" alt="CLI Preview">
 </p>
 
 <p align="center">
-  <i>Example CLI Tools</i>
+  <em>Command-line interface preview</em>
 </p>
 
 ---
 
-## Instalasi
+## Installation & Usage
+
+### Requirements
+- Python 3.8+
+- pip
+
+### Setup
 
 ```bash
 git clone https://github.com/pangeran-droid/HTTP-Flood-Attack.git
@@ -35,25 +44,30 @@ chmod +x tester.py
 ./tester.py
 ```
 
-> Di Windows, gunakan `python tester.py` saja (tanpa angka 3) jika `python3` tidak dikenali.
+> **Windows users:**  
+> If `python3` is not available, run the script using:
+> ```bash
+> python tester.py
+> ```
 
 ---
 
-## ⚠️ DISCLAIMER
+## ⚠️ Disclaimer & Legal Notice
 
-**Alat ini dibuat hanya untuk tujuan pembelajaran dan riset.**
+**This tool is created strictly for educational and research purposes.**
 
-### ✅ Diperbolehkan untuk:
+### ✅ Allowed Use
 
-- Menguji ketahanan server milik sendiri
-- Simulasi beban sebelum server dipublikasikan
-- Belajar konsep asynchronous di Python
+- Load testing servers you own or have permission to test
+- Simulating traffic for development and performance evaluation
+- Learning asynchronous programming and networking concepts in Python
 
-### ❌ Dilarang keras digunakan untuk:
+### ❌ Prohibited Use
 
-- Menyerang atau membuat sistem orang lain menjadi down
-- Aktivitas ilegal atau yang melanggar hukum
+- Attacking, disrupting, or degrading third-party systems
+- Any activity that violates laws, regulations, or terms of service
 
-> ⚖️ **Segala bentuk penyalahgunaan alat ini adalah tanggung jawab pengguna sepenuhnya. Developer tidak bertanggung jawab atas tindakan ilegal yang dilakukan dengan script ini.**
+> **Any misuse of this tool is solely the responsibility of the user.**
+The developer assumes no liability for illegal or unethical use.
 
 
